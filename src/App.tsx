@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import logo from './assets/logo/urualogo.png';
 import { 
   ArrowRight, 
   ChevronRight, 
@@ -93,12 +94,15 @@ const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-      isScrolled ? "bg-[#0A0C0E]/90 backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent"
+      isScrolled ? "bg-[#00281F]/95 backdrop-blur-md border-b border-white/5 py-2" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="#" className="flex items-center gap-1 group">
-          <span className="text-2xl font-black tracking-tighter text-white group-hover:text-[#C5A059] transition-colors">URUA</span>
-          <span className="text-[#C5A059] text-2xl font-bold">∞</span>
+        <a href="#" className="flex items-center gap-3 group">
+          <img src={logo} alt="URUA Logo" className="h-10 w-auto object-contain rounded-sm" />
+          <div className="flex flex-col -gap-1">
+            <span className="text-xl font-black tracking-tighter text-white group-hover:text-[#C5A059] transition-colors leading-none">URUA</span>
+            <span className="text-[8px] font-bold text-[#C5A059] tracking-[0.2em] uppercase opacity-80">Exposure</span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -444,7 +448,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#0F2B1A_0%,#0A0C0E_60%)] -z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#00281F_0%,#0A0C0E_60%)] -z-10" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -516,6 +520,15 @@ export default function App() {
               </div>
             ))}
           </motion.div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-8 text-[9px] font-bold text-stone-600 uppercase tracking-[0.3em] flex items-center justify-center gap-2"
+          >
+            <Activity size={10} />
+            Stats are demonstrative and executable on the first investment cycle
+          </motion.p>
         </div>
       </section>
 
@@ -631,12 +644,15 @@ export default function App() {
                   </div>
                   <div className="text-right">
                     <p className="text-4xl font-black text-[#C5A059]">R255M</p>
-                    <p className="text-xs font-medium text-stone-400">Annual Revenue Projection</p>
+                    <p className="text-xs font-medium text-stone-400">Annual Revenue Projection*</p>
                   </div>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                   <div className="h-full bg-[#C5A059] w-1/3" />
                 </div>
+                <p className="mt-4 text-[9px] font-bold text-[#1A4D3E] uppercase tracking-wider">
+                  *Projections are demonstrative and executable on the first investment cycle
+                </p>
               </div>
             </div>
           </div>
@@ -681,6 +697,10 @@ export default function App() {
             </div>
           </div>
 
+          <p className="text-center text-[10px] font-bold text-stone-600 uppercase tracking-[0.2em] mb-12">
+            Detailed performance metrics are demonstrative and executable on the first investment cycle
+          </p>
+
           <div className="bg-gradient-to-br from-[#0F2B1A] to-[#0A0C0E] border border-[#C5A059]/30 rounded-[3rem] p-8 md:p-16 flex flex-col items-center text-center">
             <h3 className="text-3xl md:text-5xl font-black leading-tight mb-8">
               Access The Full Investor Pack &<br />
@@ -702,15 +722,18 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 bg-[#0A0C0E]">
+      <footer className="py-20 border-t border-white/5 bg-[#00281F]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-1 mb-6">
-                <span className="text-3xl font-black tracking-tighter text-white">URUA</span>
-                <span className="text-[#C5A059] text-3xl font-bold">∞</span>
+              <div className="flex items-center gap-3 mb-6">
+                <img src={logo} alt="URUA Logo" className="h-12 w-auto object-contain rounded-md" />
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black tracking-tighter text-white">URUA</span>
+                  <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.3em] uppercase">Exposure</span>
+                </div>
               </div>
-              <p className="text-stone-500 max-w-sm leading-relaxed font-medium">
+              <p className="text-stone-300 max-w-sm leading-relaxed font-medium opacity-80">
                 Transforming waste into power, profit, and community progress through 
                 physical infrastructure and blockchain settlement.
               </p>
@@ -735,7 +758,20 @@ export default function App() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
-            <p className="text-xs text-stone-600 font-medium">© 2026 URUA EXPOSURE. All rights reserved.</p>
+            <div className="flex flex-col gap-1">
+              <p className="text-xs text-stone-600 font-medium">© 2026 URUA EXPOSURE. All rights reserved.</p>
+              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-stone-500">
+                <span>Developed by</span>
+                <a 
+                  href="https://www.plugconnectsolutions.co.za" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#C5A059] hover:text-white transition-colors"
+                >
+                  Plug Connect Solutions
+                </a>
+              </div>
+            </div>
             <div className="flex gap-6 text-stone-600 text-[10px] font-bold uppercase tracking-widest">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
